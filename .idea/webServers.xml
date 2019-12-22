@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="466efa72-821d-4f99-967b-9c00499ad281" name="Cheque" url="http://68.183.218.107">
+        <fileTransfer host="68.183.218.107" port="22" privateKey="$USER_HOME$/.ssh/id_rsa" rootFolder="/var/www/cheque" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

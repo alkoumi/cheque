@@ -91,7 +91,7 @@
 
     <body>
 <table style="width:100%" dir="rtl">
-   
+
     <tr>
         <td>&nbsp;&nbsp;</td>
         <td style="width:120px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$date}}</td>
@@ -172,8 +172,8 @@
     </tr>
     <tr>
         <td></td>
-        <td style="font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{{\Abuhamidah\Number\Number::int2indic($money)}}#</td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{\Abuhamidah\Number\Number::money2str($money)}} فقط لاغير</td>
+        <td style="font-size: 15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#{{\Abuhamidah\Number\Number::int2indic(number_format($money,2,'.',','))}}#</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \Alkoumi\LaravelArabicTafqeet\Tafqeet::inArabic($money)}} </td>
         {{--<td></td>--}}
         {{--<td></td>--}}
         {{--<td></td>--}}
