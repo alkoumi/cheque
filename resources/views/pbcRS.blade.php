@@ -177,9 +177,11 @@
     </tr>
     <tr style="height:35px;">
         <td>&nbsp;</td>
-        <td style="font-size: 16px">&nbsp;&nbsp;&nbsp;#{{\Abuhamidah\Number\Number::int2indic($money)}}#</td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            {{\Abuhamidah\Number\Number::money2str($money)}} فقط لاغير</td>
+        <td style="font-size: 16px">&nbsp;&nbsp;&nbsp;#{{\Abuhamidah\Number\Number::int2indic(number_format($money,2,'.',',')) }}#</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{--            {{\Abuhamidah\Number\Number::int2str($money)}} ريال لاغير </td>--}}
+{{--            {{\Abuhamidah\Number\Number::money2str($money,'SAR','ar')}} لاغير </td>--}}
+            {{ \Alkoumi\LaravelArabicTafqeet\Tafqeet::inArabic($money) }} </td>
         {{--<td></td>--}}
         {{--<td></td>--}}
         {{--<td></td>--}}
