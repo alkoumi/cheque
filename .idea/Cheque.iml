@@ -11,7 +11,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/abuhamidah/hijri" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/abuhamidah/mobily" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/abuhamidah/number" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/alkoumi/carbon-date-translator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/alkoumi/laravel-arabic-tafqeet" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/alkoumi/laravel-hijri-date" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />

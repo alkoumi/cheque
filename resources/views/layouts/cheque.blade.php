@@ -55,13 +55,17 @@
             @yield('content')
         </div>
 
-        <div class="copyright" style="color: white;"> <i class="fa fa-lock" style="color: white; font-size: 14px;"> </i>&nbsp;٢٠١٧ © تقنية المعلومات - مكتب الدعوة بالجبيل&nbsp;  </div>
+        <div class="copyright" style="color: white;"> <i class="fa fa-lock" style="color: white; font-size: 14px;"> </i>&nbsp;{{ Carbon\Carbon::now()->format('Y') }} - {{ Abuhamidah\Hijri\Hijri::date('Y') }} © تقنية المعلومات - مكتب الدعوة بالجبيل&nbsp;  </div>
         <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>
-<script src="../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
-        <script src="{{ asset("/assets/global/plugins/jquery.min.js") }}" type="text/javascript"></script>
+{{--        <script src="{{ asset("/assets/global/plugins/jquery.min.js") }}" type="text/javascript"></script>--}}
+        <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
         <script src="{{ asset("/assets/global/plugins/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js") }}" type="text/javascript"></script>
@@ -75,8 +79,10 @@
         <script src="{{ asset("/assets/global/plugins/select2/js/select2.full.min.js") }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="{{ asset("/assets/global/plugins/clipboardjs/clipboard.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/assets/global/scripts/app.min.js") }}" type="text/javascript"></script>
         <script src="{{ asset("/assets/global/scripts/sweetalert-dev.js") }}" type="text/javascript"></script>
+        <script src="{{ asset("/assets/pages/scripts/components-clipboard.min.js") }}" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <!--         <script src="../assets/pages/scripts/login.min.js" type="text/javascript"></script>
@@ -89,11 +95,75 @@
         </script> -->
         <script type="text/javascript">
             <!-- END LOGIN FORM -->
+
             // ADD PUBLISHER
             $(document).ready(function() {
+            $(document).ready(function() {
+                $( ".copy" ).click(function() {
+                    if($("#mt-target-1").text() === ""){
+                        Swal.fire({
+                            type: 'error',
+                            title: 'للأسف ...',
+                            text: 'لم تقم بتعبئة الحقول!',
+                            //footer: '<a href>Why do I have this issue?</a>',
+                            timer: 2000,
+                            showCloseButton:false,
+                            showConfirmButton:false
+                        });
+                        // Swal.fire({"title":"للأسف","text":"لم تقم بتعبئة الحقول","timer":2000,"width":"30rem","heightAuto":true,"padding":"1.50rem","showConfirmButton":false,"showCloseButton":false,"icon":"error"});
+                    }else{
+                        Swal.fire({"title":"الحمد لله","text":"تم النسخ إلى الحافظة بنجاح","timer":2000,"width":"30rem","heightAuto":true,"padding":"1.50rem","showConfirmButton":false,"showCloseButton":false,
+                            // "icon":"success",
+                            imageUrl: "../assets/file.png",
+                            imageWidth: 30,
+                            imageHeight: 30,
+                            imageAlt: 'copied!',});
+                    }
+                    // swal({
+                    //         title: "أنت على وشك إضافة طلب جديد للطبخ العربي ",
+                    //         text: '- هل أنت متأكد ؟',
+                    //         showCancelButton: true,
+                    //         cancelButtonColor: "#DD6B55",
+                    //         confirmButtonColor: "#C5B96B",
+                    //         cancelButtonText: "تراجع",
+                    //         confirmButtonText: "نعم ، متأكد بارك الله فيك!",
+                    //         closeOnConfirm: false,
+                    //         closeOnCancel: false,
+                    //         imageUrl: "../assets/money.png"
+                    //     });
+                });
+            });
 
-        $(document).ready(function() {
-        
+            $(document).ready(function() {
+                $( ".testUrl" ).click(function() {
+                    if($("#mt-target-1").text() === ""){
+                        //alert('NO DATA');
+                        Swal.fire({"title":"للأسف","text":"لم تقم بتعبئة الحقول","timer":3000,"width":"30rem","heightAuto":true,"padding":"1.50rem","showConfirmButton":false,"showCloseButton":false,
+                            "type":"error",
+                            //imageUrl: "../assets/file.png",
+                            imageWidth: 50,
+                            imageHeight: 50,
+                            imageAlt: 'copied!',});
+                    }else{
+                        document.location.href = $("#mt-target-1").text();
+                    }
+                    // swal({
+                    //         title: "أنت على وشك إضافة طلب جديد للطبخ العربي ",
+                    //         text: '- هل أنت متأكد ؟',
+                    //         showCancelButton: true,
+                    //         cancelButtonColor: "#DD6B55",
+                    //         confirmButtonColor: "#C5B96B",
+                    //         cancelButtonText: "تراجع",
+                    //         confirmButtonText: "نعم ، متأكد بارك الله فيك!",
+                    //         closeOnConfirm: false,
+                    //         closeOnCancel: false,
+                    //         imageUrl: "../assets/money.png"
+                    //     });
+                });
+            });
+
+            $(document).ready(function() {
+
             //alert(mony);
             //var mony = $('.money').val();
             parseArabic();
@@ -102,15 +172,13 @@
             function parseArabic(){ // PERSIAN, ARABIC, URDO
                     var mony = $('.money').data('money');
                     mony = (mony.replace(/[٠١٢٣٤٥٦٧٨٩]/g, function (d) {
-                        return d.charCodeAt(0) - 1632;                
+                        return d.charCodeAt(0) - 1632;
                         }).replace(/[۰۱۲۳۴۵۶۷۸۹]/g, function (d) { return d.charCodeAt(0) - 1776; })
                     );
                     return mony;
             };
 
         });
-
-
 
                 $(document).on('click','.rajhiTamayoz',function () {
                     var country = $('.country').val();
@@ -180,7 +248,76 @@
                         //
                     }
                 });
+        });
+
+            let to = "";
+            let body = "";
+            //console.log(to,body);
+
+            function updateResult() {
+                let result = $("#mt-target-1").text();
+                let url = "";
+                if(to){
+                    url += "https://cheque.jdc.org.sa/sms?number=" + to;
+                    if(body){
+                        url += "&text=" + body;
+                    }
+                }
+                $("#mt-target-1").text(url);
+            };
+
+            function phoneChange(e) {
+                to = e.target.value;
+                updateResult();
+            };
+
+            function messageChange(e) {
+                body = encodeURIComponent(e.target.value);
+                body = body.replace(/~/g, "%7E");
+                body = body.replace(/!/g, "%21");
+                body = body.replace(/\*/g, "%23");
+                body = body.replace(/\(/g, "%28");
+                body = body.replace(/\)/g, "%29");
+                body = body.replace(/'/g, "%27");
+
+                updateResult();
+            };
+
+            $(function() {
+                $("#number").keyup(function(e) {
+                    phoneChange(e);
+                });
+                $("#text").keyup(function(e) {
+                    messageChange(e);
+                });
+                updateResult();
             });
+
+            function textAreaAdjust(o) {
+                o.style.height = "1px";
+                o.style.height = (25+o.scrollHeight)+"px";
+            }
+
+            $(document).ready(function() {
+                // var tx = document.getElementsByTagName('textarea');
+                // for (var i = 0; i < tx.length; i++) {
+                //     tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;');
+                //     tx[i].addEventListener("onchange", OnInput, false);
+                // }
+                // function OnInput() {
+                //     this.style.height = 'auto';
+                //     this.style.height = (this.scrollHeight) + 'px';
+                // }
+
+
+                // $('textarea').each(function () {
+                //     this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+                // }).on('change', function () {
+                //     this.style.height = 'auto';
+                //     this.style.height = (this.scrollHeight) + 'px';
+                // });
+            });
+
         </script>
         @include('sweetalert::alert')
     </body>

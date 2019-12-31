@@ -10,8 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use Illuminate\Http\Request;
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/{country}/{chequeTo}/{total}', 'HomeController@index');
     Route::post('/printCheque', 'HomeController@printCheque');
 });
+
+Route::get("sms",'HomeController@sms');

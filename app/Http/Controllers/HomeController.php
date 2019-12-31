@@ -6,6 +6,8 @@ use Abuhamidah\Hijri\Hijri;
 use Abuhamidah\Number\Number;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -78,8 +80,6 @@ class HomeController extends Controller
         }
     }
 
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -145,4 +145,36 @@ class HomeController extends Controller
     {
         //
     }
+
+    public function sms(Request $request)
+    {
+        //return "YES";
+        if (isset($request->number) || isset($request->text))
+        {
+            //Alert::success('Success Title', 'Success Message');
+            $number = $this->TransNumbers($request->number);
+            $text = $this->TransNumbers($request->text);
+            //return Redirect::to('sms://'.$number.'&body='.$text);
+            //dd(Redirect::away('sms://'.$number.'&body='.$text));
+            return Redirect::away('sms://'.$number.'&body='.$text);
+            //dd(redirect('sms://'.$number.'&body='.$text));
+            //return redirect('sms://'.$number.'&body='.$text);
+        }else
+        {
+            //Alert::success('Success Title', 'Success Message');
+            return view('sms');
+            //return "لم تقم بتزويدنا بأحد الخيارات الرقم أو النص";
+        }
+    }
+
+    protected function TransNumbers($value)
+    {
+        if (is_string($value)) {
+            $arabic_eastern = array('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩');
+            $arabic_western = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+            return str_replace($arabic_eastern,$arabic_western, $value);
+        }
+        return $value;
+    }
+
 }

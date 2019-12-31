@@ -81,18 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    تجربة إرسال SMS
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+{{--                    <a href="sms?t=5255&body=1">send SMS!</a>--}}
+                    <a href="sms://4321&body=1">send SMS!</a>
                 </div>
             </div>
         </div>
