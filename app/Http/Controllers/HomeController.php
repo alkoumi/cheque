@@ -201,16 +201,35 @@ class HomeController extends Controller
         return stripos($_SERVER['HTTP_USER_AGENT'],"iPhone") !== false;
     }
 
+    protected function requestFromIpad()
+    {
+        return stripos($_SERVER['HTTP_USER_AGENT'],"iPad") !== false;
+    }
+
     protected function requestFromAndriod()
     {
         return stripos($_SERVER['HTTP_USER_AGENT'],"Android") !== false;
     }
+    protected function requestFromMacintosh()
+    {
+        return stripos($_SERVER['HTTP_USER_AGENT'],"Macintosh") !== false;
+    }
+
+    protected function requestFromWindows()
+    {
+        return stripos($_SERVER['HTTP_USER_AGENT'],"Windows") !== false;
+    }
 
     protected function getUrl($number ,$text)
     {
-        if($this->requestFromIphone()){
+        if($this->requestFromIphone() || $this->requestFromMacintosh() || $this->requestFromIpad()){
             return 'sms:'.$number.'&body='.$text;
         }elseif($this->requestFromAndriod()){
+            return 'sms:'.$number.'?body='.$text;
+        }elseif($this->requestFromWindows()){
+            return 'sms:'.$number.'?body='.$text;
+        }else{
+            //dd($_SERVER['HTTP_USER_AGENT']);
             return 'sms:'.$number.'?body='.$text;
         }
     }
