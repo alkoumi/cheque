@@ -154,9 +154,27 @@ class HomeController extends Controller
             //Alert::success('Success Title', 'Success Message');
             $number = $this->TransNumbers($request->number);
             $text = $this->TransNumbers($request->text);
+            $url = $this->getUrl($number,$text);
+            //$iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+            //$iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone") !== false;
+            //$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+            //$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android") !== false;
+            //$url = $this->requestFromIphone() ? 'sms:'.$number.'&body='.$text : $this->requestFromAndriod() ? 'sms:'.$number.'?body='.$text;
+
+//            if( $this->requestFromIphone() ){
+//                //browser reported as an iPhone/iPod touch -- do something here
+//                $url = 'sms:'.$number.'&body='.$text;
+//                //return Redirect::away('sms:'.$number.'&body='.$text);
+//            }else if($this->requestFromAndriod()){
+//                //browser reported as an Android device -- do something here
+//                $url = 'sms:'.$number.'?body='.$text;
+//                //return Redirect::away('sms:'.$number.'?body='.$text);
+//            }
             //return Redirect::to('sms://'.$number.'&body='.$text);
             //dd(Redirect::away('sms://'.$number.'&body='.$text));
-            return Redirect::away('sms://'.$number.'&body='.$text);
+            //return Redirect::away('sms://'.$number.'&body='.$text);
+            //return Redirect::away('sms:'.$number.'?body='.$text);
+            return Redirect::away($url);
             //dd(redirect('sms://'.$number.'&body='.$text));
             //return redirect('sms://'.$number.'&body='.$text);
         }else
@@ -175,6 +193,26 @@ class HomeController extends Controller
             return str_replace($arabic_eastern,$arabic_western, $value);
         }
         return $value;
+    }
+
+
+    protected function requestFromIphone()
+    {
+        return stripos($_SERVER['HTTP_USER_AGENT'],"iPhone") !== false;
+    }
+
+    protected function requestFromAndriod()
+    {
+        return stripos($_SERVER['HTTP_USER_AGENT'],"Android") !== false;
+    }
+
+    protected function getUrl($number ,$text)
+    {
+        if($this->requestFromIphone()){
+            return 'sms:'.$number.'&body='.$text;
+        }elseif($this->requestFromAndriod()){
+            return 'sms:'.$number.'?body='.$text;
+        }
     }
 
 }
