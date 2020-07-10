@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="68.183.218.107" id="98dbbf9d-9dfa-40ad-aa13-879393cc146b" keyPath="$USER_HOME$/.ssh/id_rsa" port="22" customName="Cheque" nameFormat="CUSTOM" username="root" />
+    </configs>
+  </component>
+</project>
