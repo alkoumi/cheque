@@ -178,7 +178,7 @@
             <tr>
                 <td></td>
                 <td style="font-size: 16px">&nbsp;&nbsp;&nbsp;#{{\Abuhamidah\Number\Number::int2indic(number_format($money,2,'.',','))}}#</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \Alkoumi\LaravelArabicTafqeet\Tafqeet::inArabic($money) }} </td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \Alkoumi\LaravelArabicTafqeet\Tafqeet::inArabic($money,'sar') }}</td>
                 {{--<td></td>--}}
                 {{--<td></td>--}}
                 {{--<td></td>--}}

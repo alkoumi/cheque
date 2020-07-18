@@ -3,11 +3,10 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="466efa72-821d-4f99-967b-9c00499ad281" name="Cheque" url="http://68.183.218.107">
-        <fileTransfer host="68.183.218.107" port="22" privateKey="$USER_HOME$/.ssh/id_rsa" rootFolder="/var/www/cheque" accessType="SFTP" keyPair="true">
+        <fileTransfer rootFolder="/var/www/cheque" accessType="SFTP" host="68.183.218.107" port="22" sshConfigId="98dbbf9d-9dfa-40ad-aa13-879393cc146b" sshConfig="Cheque" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>

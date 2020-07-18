@@ -40,7 +40,7 @@
         </div>
         <div class="form-group{{ $errors->has('money') ? ' has-error' : '' }}">
             <label class="control-label visible-ie8 visible-ie9">المبلغ</label>
-            <input class="form-control form-control-solid placeholder-no-fix money" type="number" autocomplete="on" placeholder="المبلغ : مثال : 5434" name="money" data-money="{{ Request::segment(3) }}" value="{{ Request::segment(3) }}"/>
+            <input class="form-control form-control-solid placeholder-no-fix money" type="number" step="0.01" autocomplete="on" placeholder="المبلغ : مثال : 5434" name="money" data-money="{{ Request::segment(3) }}" value="{{ Request::segment(3) }}"/>
             @if ($errors->has('money'))
                 <span class="help-block">
                                             <strong>{{ $errors->first('money') }}</strong>

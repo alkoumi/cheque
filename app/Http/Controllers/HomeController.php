@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Abuhamidah\Hijri\Hijri;
 use Abuhamidah\Number\Number;
+use Alkoumi\LaravelArabicTafqeet\Tafqeet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -48,6 +49,7 @@ class HomeController extends Controller
         $note = $request->note;
         $date = Number::int2indic(Hijri::date('Y/m/d ', strtotime(Carbon::now()))) . 'هـ';
         $kind = $request->kind;
+
 
         if ($request->has('kind') && $request->kind >= 0) {
             if ($kind == 0) {
